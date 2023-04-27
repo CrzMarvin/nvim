@@ -1,0 +1,32 @@
+{
+  "Print to console": {
+    "prefix": "mlog",
+    "body": ["console.log('$1', $1);"],
+    "description": "Log output to console"
+  },
+  "highlight console": {
+    "prefix": "hlog",
+    "body": ["console.log('%c$1', 'color: blue; font-size: 18px', $1);"],
+    "description": "Log output to formated console"
+  },
+  "const arrow fun": {
+    "prefix": "cfun",
+    "body": ["const $1 = ($2) => {", "  $0", "}"],
+    "description": "arrow function shotcut"
+  },
+  "arrow func": {
+    "prefix": "afun",
+    "body": ["($1) => {", "  $0", "}"],
+    "description": "arrow function shotcut"
+  },
+  "async arrow func": {
+    "prefix": "asfun",
+    "body": ["async ($1) => {", "  $0", "}"],
+    "description": "arrow function shotcut"
+  },
+  "export default ": {
+    "prefix": "expd",
+    "body": ["export default $1"],
+    "description": "export default "
+  }
+}

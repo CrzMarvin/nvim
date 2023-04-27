@@ -1,0 +1,36 @@
+{
+  "simple react componet": {
+    "prefix": "uss",
+    "scope": "javascriptreact",
+    "body": [
+      "import react from 'react';",
+      "",
+      "const $1 = () => {",
+      "  $0",
+      "  return (",
+      "    <>  ",
+      "    </>",
+      "  )",
+      "}",
+      "export default $1"
+    ],
+    "description": "simple react componet"
+  },
+  "simple react componet": {
+    "prefix": "src",
+    "scope": "javascriptreact",
+    "body": [
+      "import react from 'react';",
+      "",
+      "const $1 = () => {",
+      "  $0",
+      "  return (",
+      "    <>  ",
+      "    </>",
+      "  )",
+      "}",
+      "export default $1"
+    ],
+    "description": "simple react componet"
+  }
+}
