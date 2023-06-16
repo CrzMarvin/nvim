@@ -73,7 +73,14 @@ opt.iskeyword:append("-")
 --   vim.api.nvim_set_hl(0, newgroup, { link = oldgroup, default = true })
 -- end
 
+-- neovim0.9
 for _, group in ipairs(vim.fn.getcompletion("@lsp", "highlight")) do
   vim.api.nvim_set_hl(0, group, {})
 end
 -- vim.api.nvim_set_hl(0, '@lsp.type.function.lua', {})
+
+ -- make wxml file type as xml
+vim.api.nvim_exec([[
+  autocmd BufRead,BufNewFile *.wxml set filetype=xml
+]], false)
+

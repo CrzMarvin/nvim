@@ -112,6 +112,9 @@ keymap.set("n", "<leader>cs", function()
 	print("spell: " .. tostring(vim.o.spell))
 end, {})
 
+-- for chatGPT
+keymap.set("n", "<leader>ai", ":ChatGPT<CR>") -- open new tab
+
 --  for cmp
 --  NOTE: this is setup in plugins/nvim-cmp.lua
 -- mapping = cmp.mapping.preset.insert({

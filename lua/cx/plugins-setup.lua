@@ -13,7 +13,7 @@ end
 local packer_bootstrap = ensure_packer()
 
 -- Autocomman that reloads neovim whenever you save this file
-vim.cmd([[ 
+vim.cmd([[
   augroup packer_user_config
     autocmd!
     autocmd BufWritePost plugins-setup.lua source <afile> | PackerSync
@@ -68,8 +68,8 @@ return require("packer").startup(function(use)
 	-- statusline
 	use("nvim-lualine/lualine.nvim")
 
-  -- indent lines
-  use("lukas-reineke/indent-blankline.nvim")
+	-- indent lines
+	use("lukas-reineke/indent-blankline.nvim")
 
 	-- bufferline
 	-- use({ "akinsho/bufferline.nvim", tag = "v3.*", requires = "nvim-tree/nvim-web-devicons" })
@@ -101,7 +101,6 @@ return require("packer").startup(function(use)
 	-- colorized
 	use("norcalli/nvim-colorizer.lua")
 
-
 	-- treesitter configuration
 	use({
 		"nvim-treesitter/nvim-treesitter",
@@ -131,7 +130,7 @@ return require("packer").startup(function(use)
 	-- git integration
 	use("lewis6991/gitsigns.nvim") -- show line modifications on left hand side
 	use("dinhhuy258/git.nvim") -- For git blame & brows
-  use("tpope/vim-fugitive")
+	use("tpope/vim-fugitive")
 
 	-- for tailwindcss-colors highlight
 	use({
@@ -144,8 +143,23 @@ return require("packer").startup(function(use)
 			require("tailwindcss-colors").setup()
 		end,
 	})
-  -- image preview ( currently not working )
-  -- use {'edluffy/hologram.nvim'}
+  -- for gpt nvim
+	use({
+		"jackMort/ChatGPT.nvim",
+		config = function()
+			require("chatgpt").setup({
+        -- setup OPENAI_API_KEY = "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",
+        api_key_cmd = "echo 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",
+      })
+		end,
+		requires = {
+			"MunifTanjim/nui.nvim",
+			"nvim-lua/plenary.nvim",
+			"nvim-telescope/telescope.nvim",
+		},
+	})
+	-- image preview ( currently not working )
+	-- use {'edluffy/hologram.nvim'}
 	-- use("wfxr/minimap.vim")
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
