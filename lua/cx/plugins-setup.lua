@@ -149,7 +149,7 @@ return require("packer").startup(function(use)
 		config = function()
 			require("chatgpt").setup({
         -- setup OPENAI_API_KEY = "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",
-        api_key_cmd = "echo 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",
+        api_key_cmd = "echo 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",
       })
 		end,
 		requires = {
