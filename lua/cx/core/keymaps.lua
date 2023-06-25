@@ -13,7 +13,6 @@ keymap.set("n", "<leader>nh", ":nohl<CR>")
 keymap.set("n", "x", '"_x') -- in normal mode use x to delete a character will not cut to clipboard
 
 -- common quit
-keymap.set("i", "<leader>q", '<C-c>') -- quit 
 keymap.set("n", "<leader>q", '<C-c>') -- quit 
 
 -- select block of {

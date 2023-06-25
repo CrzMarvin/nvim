@@ -132,6 +132,9 @@ lspconfig["tailwindcss"].setup({
 	on_attach = on_attach,
 })
 
+-- configure xml server
+lspconfig.lemminx.setup({})
+
 -- configure emmet language server
 -- lspconfig["emmet_ls"].setup({
 --   capabilities = capabilities,
