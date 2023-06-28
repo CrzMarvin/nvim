@@ -56,6 +56,8 @@ nvim runtim path: `/opt/homebrew/Cellar/neovim/0.8.0/share/nvim/runtime/`
 `:e $VIMRUNTIME/colors`
 Treesitter Highlight Groups  `:e $VIMRUNTIME/syntax`
 
+对选中的进行替换:v模式选中需要修改的片段,然后输入`:s/{from}/{to}`
+
 ### lsp saga 快捷键
 就是`gf` `gd` 弹出的对话框
 ```lua
