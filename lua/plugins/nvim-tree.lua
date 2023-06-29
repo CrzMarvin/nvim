@@ -9,7 +9,7 @@ vim.g.loaded_netrwPlugin = 1
 -- configure nvim-tree
 return {
 	"nvim-tree/nvim-tree.lua",
-  requires = {
+  dependencies = {
     "nvim-tree/nvim-web-devicons",
   },
   config = function()

@@ -1,0 +1,63 @@
+-- for some how, the treesitter plugin is not working properly,
+-- so I have to use the old way to config it.
+
+-- stylua: ignore
+-- ignore this file
+if true then return {} end
+-- return {
+--   -- add more treesitter parsers
+--   {
+--     "nvim-treesitter/nvim-treesitter",
+--     dependencies = {
+-- 			"nvim-treesitter/nvim-treesitter-textobjects",
+-- 		},
+-- 		build = ":TSUpdate",
+--     opts = {
+--       -- enable syntax highlighting
+--       highlight = {
+--         enable = true,
+--       },
+--       -- enable indentation
+--       indent = { enable = true },
+--       -- enable autotagging (w/ nvim-ts-autotag plugin)
+--       autotag = { enable = true },
+--       -- ensure these language parsers are installed
+--       ensure_installed = {
+--         "json",
+--         "javascript",
+--         "typescript",
+--         "tsx",
+--         "yaml",
+--         "html",
+--         "css",
+--         "markdown",
+--         "markdown_inline",
+--         "svelte",
+--         "graphql",
+--         "bash",
+--         "lua",
+--         "vim",
+--         "regex",
+--         "dockerfile",
+--         "python",
+--         "gitignore",
+--       },
+--       -- auto install above language parsers
+--       auto_install = true,
+--     },
+--   },
+
+--   -- since `vim.tbl_deep_extend`, can only merge tables and not lists, the code above
+--   -- would overwrite `ensure_installed` with the new value.
+--   -- If you'd rather extend the default config, use the code below instead:
+--   {
+--     "nvim-treesitter/nvim-treesitter",
+--     opts = function(_, opts)
+--       -- add tsx and treesitter
+--       vim.list_extend(opts.ensure_installed, {
+--           "tsx",
+--           "typescript",
+--       })
+--     end,
+--   },
+-- }

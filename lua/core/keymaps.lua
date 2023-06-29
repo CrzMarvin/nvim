@@ -63,6 +63,9 @@ keymap.set("n", "<leader>sfn", ":let @+ = expand('%:p') | call system('pbcopy', 
 keymap.set("v", "J", ":m '>+1<CR>gv=gv") -- move line downk
 keymap.set("v", "K", ":m '<-2<CR>gv=gv") -- move line up
 
+-- for copy whole file
+keymap.set("n", "<leader>fy", ":%y<CR>")
+
 ----------------------
 -- Plugin Keybinds
 ----------------------
@@ -82,7 +85,9 @@ keymap.set("n", "<leader>fi", "<cmd>Telescope current_buffer_fuzzy_find<cr>") --
 keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>") -- find string under cursor in current working directory
 keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>") -- list open buffers in current neovim instance
 keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>") -- list available help tags
-keymap.set("n", "<leader>fy", ":%y<CR>") -- list available help tags
+
+-- show all registered keymaps
+keymap.set("n", "<leader>km", "<cmd>Telescope keymaps<cr>") -- list available help tags
 
 -- telescope git commands (not on youtube nvim video)
 keymap.set("n", "<leader>gc", "<cmd>Telescope git_commits<cr>") -- list all git commits (use <cr> to checkout) ["gc" for git commits]
@@ -121,7 +126,7 @@ end, {})
 keymap.set("n", "<leader>ai", ":ChatGPT<CR>") -- open new tab
 
 --  for cmp
---  NOTE: this is setup in plugins/nvim-cmp.lua
+--  NOTE: this is setup in plugins-config/nvim-cmp.lua
 -- mapping = cmp.mapping.preset.insert({
 -- 	["<C-k>"] = cmp.mapping.select_prev_item(), -- previous suggestion
 -- 	["<C-j>"] = cmp.mapping.select_next_item(), -- next suggestion
@@ -134,7 +139,7 @@ keymap.set("n", "<leader>ai", ":ChatGPT<CR>") -- open new tab
 -- })
 
 --  for lsp
---  this is set in cx/lsp/lspconfig.lua
+--  this is set in plugins-config/lsp/lspconfig.lua
 -- 	keymap.set("n", "gf", "<cmd>Lspsaga lsp_finder<CR>", opts) -- show definition, references
 -- 	keymap.set("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts) -- got to declaration
 -- 	keymap.set("n", "gd", "<cmd>Lspsaga peek_definition<CR>", opts) -- see definition and make edits in window
