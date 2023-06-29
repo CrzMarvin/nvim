@@ -13,7 +13,7 @@ keymap.set("n", "<leader>nh", ":nohl<CR>")
 keymap.set("n", "x", '"_x') -- in normal mode use x to delete a character will not cut to clipboard
 
 -- common quit
-keymap.set("n", "<leader>q", '<C-c>') -- quit 
+keymap.set("n", "<leader>q", "<C-c>") -- quit
 
 -- select block of {
 keymap.set("n", "<leader>vf", "va{V")
@@ -46,11 +46,11 @@ keymap.set("n", "<leader>wr", ":%s/") -- search and replace the word under curso
 
 -- for yank or delete in register
 keymap.set("n", "<leader>py", '"0p')
-keymap.set("n", "<leader>y", "\"+y")
-keymap.set("v", "<leader>y", "\"+y")
-keymap.set("v", "<leader>Y", "\"+Y")
-keymap.set("n", "<leader>d", "\"_d")
-keymap.set("v", "<leader>d", "\"_d")
+keymap.set("n", "<leader>y", '"+y')
+keymap.set("v", "<leader>y", '"+y')
+keymap.set("v", "<leader>Y", '"+Y')
+keymap.set("n", "<leader>d", '"_d')
+keymap.set("v", "<leader>d", '"_d')
 
 -- for show current file path
 -- keymap.set("n", "<leader>fn", ":echo expand('%:p')<CR>")
@@ -109,7 +109,7 @@ keymap.set("n", "<leader>zg", "", {})
 -- for toggle format
 keymap.set("n", "<leader>fm", ":lua vim.lsp.buf.format()<cr>", {})
 
--- for clear snipt cache when bug hapens 
+-- for clear snipt cache when bug hapens
 keymap.set("n", "<leader>cl", "<cmd>LuaSnipUnlinkCurrent<cr>", {})
 
 -- for jump between recent two files
@@ -150,7 +150,19 @@ keymap.set("n", "<leader>ai", ":ChatGPT<CR>") -- open new tab
 -- 	keymap.set("n", "<leader>d", "<cmd>Lspsaga show_cursor_diagnostics<CR>", opts) -- show diagnostics for cursor
 -- 	keymap.set("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts) -- jump to previous diagnostic in buffer
 -- 	keymap.set("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts) -- jump to next diagnostic in buffer
+-- keymap.set("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts) -- jump to previous diagnostic in buffer
+-- keymap.set("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts) -- jump to next diagnostic in buffer
 --
+-- -- Show line diagnostics
+-- -- You can pass argument ++unfocus to
+-- -- unfocus the show_line_diagnostics floating window
+-- keymap.set("n", "[l", "<cmd>Lspsaga show_line_diagnostics<CR>", opts)
+--
+-- -- Show buffer diagnostics
+-- keymap.set("n", "[b", "<cmd>Lspsaga show_buf_diagnostics<CR>", opts)
+--
+-- -- Show workspace diagnostics
+-- keymap.set("n", "[a", "<cmd>Lspsaga show_workspace_diagnostics<CR>", opts)
 -- 	-- Only jump to error
 -- 	keymap.set("n", "[e", function()
 -- 		require("lspsaga.diagnostic").goto_prev({ severity = vim.diagnostic.severity.ERROR })

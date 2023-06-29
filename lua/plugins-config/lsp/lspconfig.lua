@@ -30,13 +30,30 @@ local on_attach = function(client, bufnr)
 	keymap.set("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts) -- got to definition(定义)
 	keymap.set("n", "gD", "<cmd>Lspsaga peek_definition<CR>", opts) -- see definition and make edits in window
 	keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts) -- go to implementation(实现细节)
+
+	-- for lsp saga
 	keymap.set("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opts) -- see available code actions
 	keymap.set("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", opts) -- smart rename
 	-- conflict with slient delete
 	-- keymap.set("n", "<leader>d", "<cmd>Lspsaga show_line_diagnostics<CR>", opts) -- show  diagnostics for line
 	-- keymap.set("n", "<leader>d", "<cmd>Lspsaga show_cursor_diagnostics<CR>", opts) -- show diagnostics for cursor
+
 	keymap.set("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts) -- jump to previous diagnostic in buffer
 	keymap.set("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts) -- jump to next diagnostic in buffer
+
+	-- Show line diagnostics
+	-- You can pass argument ++unfocus to
+	-- unfocus the show_line_diagnostics floating window
+	keymap.set("n", "[l", "<cmd>Lspsaga show_line_diagnostics<CR>", opts)
+
+	-- Show buffer diagnostics
+	keymap.set("n", "[b", "<cmd>Lspsaga show_buf_diagnostics<CR>", opts)
+
+	-- Show workspace diagnostics
+	keymap.set("n", "[a", "<cmd>Lspsaga show_workspace_diagnostics<CR>", opts)
+
+	-- Floating terminal
+	-- keymap.set({ "n", "t" }, "<A-d>", "<cmd>Lspsaga term_toggle<CR>", opts)
 
 	-- Only jump to error
 	keymap.set("n", "[e", function()
