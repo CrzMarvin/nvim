@@ -1,3 +1,4 @@
+-- current not used
 local status, hologram = pcall(require, "hologram")
 if not status then
 	return

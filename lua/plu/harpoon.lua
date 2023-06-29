@@ -1,3 +1,4 @@
+-- current not used
 local M = {}
 
 function M.setup()

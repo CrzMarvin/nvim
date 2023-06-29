@@ -28,6 +28,8 @@ add session: `:new `
 rename window: `prefix + ,`
 **quit pane or window: exit**
 
+kill all session: 命令模式下`kill-session -a`
+
 about copy mode
 1.  Add setw -g mode-keys vi in your tmux config.
 2.  Ctrl + \[ to enter tmux vi copy mode.

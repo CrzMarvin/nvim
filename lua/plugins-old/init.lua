@@ -129,7 +129,6 @@ return {
 	"onsails/lspkind.nvim", -- vs-code like icons for autocompletion
 	"RRethy/vim-illuminate", -- highlighting other uses of the word under the cursor using
 	-- "folke/lsp-colors.nvim", -- lsp diagnostics colors
-	"folke/todo-comments.nvim",
 	-- git integration
 	"lewis6991/gitsigns.nvim", -- show line modifications on left hand side
 	"dinhhuy258/git.nvim", -- For git blame & brows

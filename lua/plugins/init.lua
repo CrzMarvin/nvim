@@ -1,50 +1,54 @@
 return {
-	-- My plugins here
-	-- personName
-	"nvim-lua/plenary.nvim", -- lua functions that many plugins use
+	-- -- My plugins here
+	-- -- personName
+	-- "nvim-lua/plenary.nvim", -- lua functions that many plugins use
 
-	-- "bluz71/vim-nightfly-guicolors",
-	-- "rebelot/kanagawa.nvim",
-	-- "gruvbox-community/gruvbox",
-	-- "sainnhe/gruvbox-material",
-	-- "folke/tokyonight.nvim",
-	-- { "catppuccin/nvim", as = "catppuccin" },
-	-- { "rose-pine/neovim", as = "rose-pine" },
-	-- {
-	-- 	"svrana/neosolarized.nvim",
-	-- 	dependencies = { "tjdevries/colorbuddy.nvim" },
-	-- },
+	-- -- "bluz71/vim-nightfly-guicolors",
+	-- -- "rebelot/kanagawa.nvim",
+	-- -- "gruvbox-community/gruvbox",
+	-- -- "sainnhe/gruvbox-material",
+	-- -- "folke/tokyonight.nvim",
+	-- -- { "catppuccin/nvim", as = "catppuccin" },
+	-- -- { "rose-pine/neovim", as = "rose-pine" },
+	-- -- {
+	-- -- 	"svrana/neosolarized.nvim",
+	-- -- 	dependencies = { "tjdevries/colorbuddy.nvim" },
+	-- -- },
 	"RRethy/nvim-base16",
-
-	"szw/vim-maximizer", -- maximizes and restores current window
+  "goolord/alpha-nvim",
+	-- "szw/vim-maximizer", -- maximizes and restores current window
 
 	-- tmux & split window navigation
 	"christoomey/vim-tmux-navigator",
 
-	-- essential plugins
+	-- -- essential plugins
 	"tpope/vim-surround", -- add, delete, change surroundings (it's awesome)
-	-- cheatsheet ysw" ds" cs"'
-	"vim-scripts/ReplaceWithRegister", -- replace with register contents using motion (gr + motion)
+	-- -- cheatsheet ysw" ds" cs"'
+	-- "vim-scripts/ReplaceWithRegister", -- replace with register contents using motion (gr + motion)
 
-	-- commenting with gc
-	-- cheatsheet gcc (comment or uncomment line), gc8j comment 8 lines
-	"numToStr/Comment.nvim",
+	-- -- commenting with gc
+	-- -- cheatsheet gcc (comment or uncomment line), gc8j comment 8 lines
+	-- "numToStr/Comment.nvim",
 
-	-- file explorer
-	"nvim-tree/nvim-tree.lua",
+	-- -- file explorer
+	-- -- "nvim-tree/nvim-tree.lua",
 
-	-- vs-code like icons
-	-- "kyazdani42/nvim-web-devicons",
+	-- -- vs-code like icons
+	-- -- "kyazdani42/nvim-web-devicons",
 
-	-- statusline
-	"nvim-lualine/lualine.nvim",
+	-- -- statusline
+	{
+		'nvim-lualine/lualine.nvim',
+		event = "VeryLazy",
+		requires = {'nvim-tree/nvim-web-devicons', opt = true}
+	},
 
-	-- indent lines
-	"lukas-reineke/indent-blankline.nvim",
+	-- -- indent lines
+	-- "lukas-reineke/indent-blankline.nvim",
 
-	-- bufferline
+	-- -- bufferline
 	-- { "akinsho/bufferline.nvim", tag = "v3.*", dependencies = "nvim-tree/nvim-web-devicons" },
-	--
+	-- --
 	-- Fuzzy Finder (files, lsp, etc)
 	{ "nvim-telescope/telescope.nvim", branch = "0.1.x", dependencies = { "nvim-lua/plenary.nvim" } },
 	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
@@ -81,10 +85,10 @@ return {
 	"jose-elias-alvarez/null-ls.nvim", -- configure formatters & linters
 	"jayp0521/mason-null-ls.nvim", -- bridges gap b/w mason & null-ls
 
-	-- colorized
-	"norcalli/nvim-colorizer.lua",
+	-- -- colorized -- separated
+	-- "norcalli/nvim-colorizer.lua",
 
-	-- treesitter configuration
+	-- -- treesitter configuration -- separated
 	{
 		-- Highlight, edit, and navigate code
 		"nvim-treesitter/nvim-treesitter",
@@ -92,6 +96,41 @@ return {
 			"nvim-treesitter/nvim-treesitter-textobjects",
 		},
 		build = ":TSUpdate",
+		config = function()
+			require("nvim-treesitter").setup(
+				{
+					-- enable syntax highlighting
+					highlight = {
+						enable = true,
+					},
+					-- enable indentation
+					indent = { enable = true },
+					-- enable autotagging (w/ nvim-ts-autotag plugin)
+					autotag = { enable = true },
+					-- ensure these language parsers are installed
+					ensure_installed = {
+						"json",
+						"javascript",
+						"typescript",
+						"tsx",
+						"yaml",
+						"html",
+						"css",
+						"markdown",
+						"markdown_inline",
+						"svelte",
+						"graphql",
+						"bash",
+						"lua",
+						"vim",
+						"dockerfile",
+						"gitignore",
+					},
+					-- auto install above language parsers
+					auto_install = true,
+				}
+			)
+		end,
 	},
 	-- {
 	-- 	"nvim-treesitter/nvim-treesitter",
@@ -106,9 +145,6 @@ return {
 
 	-- auto closing
 	"windwp/nvim-autopairs", -- autoclose parens, brackets, quotes, etc...
-
-	-- copilot
-	"github/copilot.vim",
 
 	-- lsp
 	-- configuring lsp servers
@@ -129,39 +165,25 @@ return {
 	"onsails/lspkind.nvim", -- vs-code like icons for autocompletion
 	"RRethy/vim-illuminate", -- highlighting other uses of the word under the cursor using
 	-- "folke/lsp-colors.nvim", -- lsp diagnostics colors
-	"folke/todo-comments.nvim",
-	-- git integration
-	"lewis6991/gitsigns.nvim", -- show line modifications on left hand side
-	"dinhhuy258/git.nvim", -- For git blame & brows
-	"tpope/vim-fugitive",
+	-- "folke/todo-comments.nvim", -- separated
 
-	-- for tailwindcss-colors highlight
-	{
-		"themaxmarchuk/tailwindcss-colors.nvim",
-		-- load only on require("tailwindcss-colors")
-		module = "tailwindcss-colors",
-		-- run the setup function after plugin is loaded
-		config = function()
-			-- pass config options here (or nothing to use defaults)
-			require("tailwindcss-colors").setup()
-		end,
-	},
-	-- for gpt nvim
-	{
-		"jackMort/ChatGPT.nvim",
-		event = "VeryLazy",
-		config = function()
-			require("chatgpt").setup({
-				-- setup OPENAI_API_KEY = "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",
-				api_key_cmd = "echo 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",
-			})
-		end,
-		dependencies = {
-			"MunifTanjim/nui.nvim",
-			"nvim-lua/plenary.nvim",
-			"nvim-telescope/telescope.nvim",
-		},
-	},
+	-- git integration -- separated
+	-- "lewis6991/gitsigns.nvim", -- show line modifications on left hand side
+	-- "dinhhuy258/git.nvim", -- For git blame & brows
+	-- "tpope/vim-fugitive",
+
+	-- -- for tailwindcss-colors highlight -- separated
+	-- {
+	-- 	"themaxmarchuk/tailwindcss-colors.nvim",
+	-- 	-- load only on require("tailwindcss-colors")
+	-- 	module = "tailwindcss-colors",
+	-- 	-- run the setup function after plugin is loaded
+	-- 	config = function()
+	-- 		-- pass config options here (or nothing to use defaults)
+	-- 		require("tailwindcss-colors").setup()
+	-- 	end,
+	-- },
+
 	-- image preview ( currently not working )
 	-- use {'edluffy/hologram.nvim'}
 	-- "wfxr/minim
