@@ -1,3 +1,6 @@
+local keymapsConfig = require("core.keymaps")
+vim.g.mapleader = keymapsConfig.mapleader
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({

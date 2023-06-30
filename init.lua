@@ -1,5 +1,4 @@
 require("core.options")
-require("core.keymaps")
 
 require("core.lazy")
 require("core.colorscheme.base16")
@@ -20,5 +19,7 @@ require("plugins-config.lsp.null-ls")
 require("plugins-config.autopair")
 -- -- hologram currently not working
 -- require("plugins-config.hologram")
--- require("plugins-config.bufferline")
+require("plugins-config.bufferline")
 require("plugins-config.lsp-color")
+
+require("core.keymaps")

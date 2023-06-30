@@ -20,20 +20,25 @@ local protocol = require("vim.lsp.protocol")
 
 local keymap = vim.keymap -- for conciseness
 
+local function optsAddDesc(opts, desc)
+	local newOpts = vim.tbl_extend("force", opts, { desc = desc })
+	return newOpts
+end
+
 -- enable keybinds only for when lsp server available
 local on_attach = function(client, bufnr)
 	-- keybind options
 	local opts = { noremap = true, silent = true, buffer = bufnr }
 
 	-- set keybinds
-	keymap.set("n", "gf", "<cmd>Lspsaga lsp_finder<CR>", opts) -- show definition, references
-	keymap.set("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts) -- got to definition(定义)
-	keymap.set("n", "gD", "<cmd>Lspsaga peek_definition<CR>", opts) -- see definition and make edits in window
-	keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts) -- go to implementation(实现细节)
+	keymap.set("n", "gf", "<cmd>Lspsaga lsp_finder<CR>", optsAddDesc(opts, "Lspsaga: lsp finder")) -- show definition, references
+	keymap.set("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", optsAddDesc(opts, "Lspsaga: go to definition")) -- got to definition(定义)
+	keymap.set("n", "gp", "<cmd>Lspsaga peek_definition<CR>", optsAddDesc(opts, "Lspsaga: peek definition")) -- see definition and make edits in window
+	keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", optsAddDesc(opts, "Lspsaga: go to implementation")) -- go to implementation(实现细节) 
 
 	-- for lsp saga
-	keymap.set("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opts) -- see available code actions
-	keymap.set("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", opts) -- smart rename
+	keymap.set("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", optsAddDesc(opts, "Lspsaga: code action")) -- see available code actions
+	keymap.set("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", optsAddDesc(opts, "Lspsaga: rename")) -- smart rename
 	-- conflict with slient delete
 	-- keymap.set("n", "<leader>d", "<cmd>Lspsaga show_line_diagnostics<CR>", opts) -- show  diagnostics for line
 	-- keymap.set("n", "<leader>d", "<cmd>Lspsaga show_cursor_diagnostics<CR>", opts) -- show diagnostics for cursor
@@ -73,9 +78,9 @@ local on_attach = function(client, bufnr)
 
 	-- typescript specific keymaps (e.g. rename file and update imports)
 	if client.name == "tsserver" then
-		keymap.set("n", "<leader>rf", ":TypescriptRenameFile<CR>") -- rename file and update imports
-		keymap.set("n", "<leader>oi", ":TypescriptOrganizeImports<CR>") -- organize imports (not in youtube nvim video)
-		keymap.set("n", "<leader>ru", ":TypescriptRemoveUnused<CR>") -- remove unused variables (not in youtube nvim video)
+		keymap.set("n", "<leader>rf", ":TypescriptRenameFile<CR>", { desc = "Typescript: rename file and update imports" }) -- rename file and update imports
+		keymap.set("n", "<leader>oi", ":TypescriptOrganizeImports<CR>", { desc = "Typescript: organize imports" }) -- organize imports (not in youtube nvim video)
+		keymap.set("n", "<leader>ru", ":TypescriptRemoveUnused<CR>", { desc = "Typescript: remove unused variables" }) -- remove unused variables (not in youtube nvim video)
 	end
 	if client.name == "tailwindcss" then
 		require("tailwindcss-colors").buf_attach(bufnr) --  for tailwindcss-colors highlight

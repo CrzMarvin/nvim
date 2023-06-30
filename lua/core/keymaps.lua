@@ -1,7 +1,27 @@
-vim.g.mapleader = " " -- space key as leader key
+local M = {}
+
+M.mapleader = " " -- space key as leader key
+
+vim.g.mapleader = M.mapleader
+
+-- 可以参考layzVim 配置: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
+
+-- api: vim.keymap.set(mode, lhs, rhs, opts)
+-- keymap opt 解释:
+-- silent = true：键盘映射执行时不在命令行中显示映射的命令。
+-- nowait = true：键盘映射执行后立即返回，而不等待其他键的输入。
+-- noremap = true：禁用递归映射，确保在执行映射时不会被其他映射再次触发。
+-- des: 人类友好的描述
+
+-- 基于通用opts配置增加描述的方法
+local opts = { silent = true, nowait = true, noremap = true }
+local function optsAddDesc(desc)
+	local newOpts = vim.tbl_extend("force", opts, { desc = desc })
+	return newOpts
+end
+-- e.g. keymap.set("n", "<leader>q", ":q<CR>", optsAddDesc("quit"))
 
 local keymap = vim.keymap -- for conciseness 为了简洁
-local silent = { silent = true }
 
 ---------------------
 -- General Keymaps
@@ -14,6 +34,8 @@ keymap.set("n", "x", '"_x') -- in normal mode use x to delete a character will n
 
 -- common quit
 keymap.set("n", "<leader>q", "<C-c>") -- quit
+
+keymap.set("n", "<leader>qq", "<cmd>bdelete!<cr>", optsAddDesc("quit current buffer without save"))
 
 -- select block of {
 keymap.set("n", "<leader>vf", "va{V")
@@ -189,23 +211,23 @@ keymap.set("n", "<leader>ai", ":ChatGPT<CR>") -- open new tab
 -- for harpoon
 keymap.set("n", "<leader>ha", function()
 	require("harpoon.mark").add_file()
-end, silent)
+end, { silent = true, desc = "Add file to harpoon" })
 keymap.set("n", "<leader>hp", function()
 	require("harpoon.ui").toggle_quick_menu()
-end, silent)
+end, { silent = true, desc = "Toggle harpoon menu" })
 
 keymap.set("n", "<leader>1", function()
 	require("harpoon.ui").nav_file(1)
-end, silent)
+end, { silent = true, desc = "Navigate to harpoon file 1" })
 keymap.set("n", "<leader>2", function()
 	require("harpoon.ui").nav_file(2)
-end, silent)
+end, { silent = true, desc = "Navigate to harpoon file 2" })
 keymap.set("n", "<leader>3", function()
 	require("harpoon.ui").nav_file(3)
-end, silent)
+end, { silent = true, desc = "Navigate to harpoon file 3" })
 keymap.set("n", "<leader>4", function()
 	require("harpoon.ui").nav_file(4)
-end, silent)
+end, { silent = true, desc = "Navigate to harpoon file 4" })
 
 -- todo-comments
 vim.keymap.set("n", "]t", function()
@@ -229,3 +251,5 @@ end, { desc = "Previous todo comment" })
 -- 进入行v模式:  V
 -- 选择
 -- S{
+
+return M
